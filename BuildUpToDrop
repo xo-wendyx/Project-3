@@ -1,7 +1,7 @@
 # Imperial March
 #Sheet Music:https://www.musicnotes.com/sheetmusic/mtd.asp?ppn=MN0017607
 #BPM used :https://songbpm.com/imperial-march?q=Imperial%20March
-x=13
+x=2
 
 use_bpm 96
 live_loop :Imperialmarch do
@@ -105,7 +105,7 @@ end
 9.times do
   sample :drum_cymbal_pedal, amp: x
   sleep 3.05
-  sample :drum_roll,decay: 10
+  sample :drum_roll,decay: 10, amp: x
   sleep 3.05
   x = x + 0.015625/2
 end
