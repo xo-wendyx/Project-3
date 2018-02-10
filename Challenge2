@@ -1,7 +1,21 @@
+# This line of code represents the sounds that will be playing throughout, instead of using the regular beeping noise it will turn into piano notes.
 use_synth :piano
+
+# x is the variable that will represent the note that will be played
+# We set the variable x to 21, because that will be the first note to play 
 x=21
+
+# This is a loop that states that anything within it, will play 87 times before stopping
 87.times do
+
+# This will stay playing x which is the value we assigned in line 6, which is 21. It will start playing note 21 first.
   play x
+  
+  # It will begin increasing the value of x by 1.
+   x=(x+1)
+   
+   #It will wait 0.25 seconds before playing the next note and repeating the loop.
   sleep 0.25
-  x=(x+1)
+  
+   #The loop will come to an end/stops.
 end
