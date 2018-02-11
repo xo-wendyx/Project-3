@@ -1,11 +1,13 @@
-# Imperial March
+# Song Name :Imperial March by John Williams 
 #Sheet Music:https://www.musicnotes.com/sheetmusic/mtd.asp?ppn=MN0017607
 #BPM used :https://songbpm.com/imperial-march?q=Imperial%20March
 x=2
+a= :dpulse
+b= 96
 
-use_bpm 96
+use_bpm b
 live_loop :Imperialmarch do
-  use_synth :dpulse
+  use_synth a
   sleep 4
   play :G4
   sleep 1
