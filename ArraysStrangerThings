@@ -1,0 +1,33 @@
+# Stranger Things Main Theme
+# NOTE: Each measure's total sleep adds up to 4 because the time signature is 4/4
+use_bpm 160
+use_synth :saw
+#Using an array,I was able to list out all eight notes in order for the melody to correctly play. Instead of writing each note individually, the array allows it only be written once, by simply calling it with the index number set at 0.
+stranger_notes = [:c2, :e2, :g2, :b2, :c3, :b2, :g2, :e2]
+#the index is set to 0, because that is the first note that will play, which is c2. 
+index=0
+
+live_loop :sounds do
+  with_fx :distortion do
+    8.times do
+    #In line 14, the array will begin playing all the notes in order as it was listed.
+      play stranger_notes[index] 
+      sleep  0.5
+      index = index + 1
+      #this will make "index" one count higher
+    end
+    index=0
+    #Once the loop has gone through all eight numbers, it will return to the number 0 and start the loop all over again.
+  end
+end
+
+
+live_loop :drums do
+  sleep 2
+  sample :bd_808, amp: 100
+  sleep 3.5
+  sample :bd_808, amp: 100, sustain: 0.25
+  sleep 0.5
+  sample :bd_808, amp: 100
+  sleep 2
+end
