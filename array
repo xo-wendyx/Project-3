@@ -1,0 +1,74 @@
+# Imperial March
+#Sheet Music:https://www.musicnotes.com/sheetmusic/mtd.asp?ppn=MN0017607
+#BPM used :https://songbpm.com/imperial-march?q=Imperial%20March
+x=2
+a= :dpulse
+b=96
+imperial_notes = [:g4,:g4,:g4,:e4,:b4,:g4,:e4,:b4,:g4,:d5,:d5,:d5,:e5,:b4,:gb4,:e4,:b4,:g4]
+imperial_sleep =[4,1,1,1,0.75,0.50,1,0.75,0.50,2,1,1,1,0.75,0.50,1,0.75,0.50,2]
+use_bpm b
+live_loop :Imperialmarch do
+  use_synth a
+  index=0
+  18.times do
+    play imperial_notes[index]
+    sleep imperial_sleep[index]
+    index = index+1
+  end
+end
+
+
+live_loop :imperialmarch2 do
+  use_synth :dpulse
+  play :B3
+  play :G3
+  sleep 1
+  play :B3
+  play :G3
+  sleep 1
+  play :B3
+  play :G3
+  sleep 1
+  play :Gb3
+  play :Eb3
+  sleep 1.25
+  
+  play :B3
+  play :G3
+  sleep 1
+  play :Gb3
+  play :Eb3
+  sleep 1
+  play :B3
+  play :G3
+  sleep 1
+  play :B3
+  play :G3
+  sleep 1
+  
+  play :B3
+  play :G3
+  sleep 1
+  play :B3
+  play :G3
+  sleep 1
+  play :B3
+  play :G3
+  sleep 1
+  play :Gb3
+  play :Eb3
+  sleep 1
+  
+  play :Gb3
+  play :Eb3
+  sleep 1
+  play :Gb3
+  play :Eb3
+  sleep 1
+  play :B3
+  play :G3
+  sleep 1
+  play :B3
+  play :G3
+  sleep 1
+end
