@@ -1,0 +1,105 @@
+#Imperial March by John Williams
+#Sheet Music:https://www.musicnotes.com/sheetmusic/mtd.asp?ppn=MN0017607
+#BPM Used :https://songbpm.com/imperial-march?q=Imperial%20March
+x=0
+a= :dpulse
+b= 96
+c=1
+
+use_synth :dpulse
+use_bpm 96
+live_loop :march do
+  play :g4
+  sleep 1
+  play :g4
+  sleep 1
+  play :g4
+  sleep 1
+  play :e4
+  sleep 0.5
+  play :Bb4
+  sleep 0.5
+  
+  play :g4
+  sleep 1
+  play :e4
+  sleep 0.5
+  play :Bb4
+  sleep 0.5
+  play :g4
+  sleep 2
+  
+  play :d5
+  sleep 1
+  play :d5
+  sleep 1
+  play :d5
+  sleep 1
+  play :Eb5
+  sleep 0.5
+  play :Bb4
+  sleep 0.5
+  
+  play :Gb4
+  sleep 1
+  play :e4
+  sleep 0.5
+  play :Bb4
+  sleep 0.5
+  play :Gs4
+  sleep 2
+end
+
+live_loop :imperialtreble do
+  play :G3
+  play :B3
+  sleep c
+  play :G3
+  play :B3
+  sleep c
+  play :G3
+  play :B3
+  sleep c
+  play :Eb3
+  play :Gb3
+  sleep c
+  
+  play :G3
+  play :B3
+  sleep c
+  play :Eb3
+  play :Gb3
+  sleep c
+  play :G3
+  play :B3
+  sleep c
+  play :G3
+  play :B3
+  sleep c
+  
+  play :G3
+  play :B3
+  sleep c
+  play :G3
+  play :B3
+  sleep c
+  play :G3
+  play :B3
+  sleep c
+  play :Eb3
+  play :Gb3
+  sleep c
+  
+  play :Eb3
+  play :Gb3
+  sleep c
+  play :E3
+  play :Gb3
+  sleep c
+  play :G3
+  play :B3
+  sleep c
+  play :G3
+  play :B3
+  sleep c
+end
