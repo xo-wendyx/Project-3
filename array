@@ -86,7 +86,8 @@ live_loop :imperial_bass do
 end
 #Lines 87-95, will begin playing the build up for 9 times, once it plays 9 times it will stop.
 9.times do
-  sample :drum_cymbal_pedal, amp: x
+#For line 90, instead of making the amp x (x representing zero) I made the amp choose a random integer between 3 or 9, so when the code runs it will choose between those two numbers. 
+  sample :drum_cymbal_pedal, amp: rrand_i(3,9)
   sleep 1
   sample :drum_heavy_kick, amp: x
   sleep 1
