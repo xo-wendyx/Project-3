@@ -1,0 +1,105 @@
+#Imperial March by John Williams
+#Sheet Music:https://www.musicnotes.com/sheetmusic/mtd.asp?ppn=MN0017607
+#BPM Used :https://songbpm.com/imperial-march?q=Imperial%20March
+
+#These variables are put in place, so that it would make it easier for anyone to change the numbers and names listed throughout the code. Instead of having to change each line one by one, now you change one variable and all of them change.
+x=0 
+father = "/Users/wendyrodriguez/Desktop/man"
+a= :dpulse 
+b=96
+c=1
+#Using an array,I was able to list out all eighteen notes in order for the melody to correctly play. Instead of writing each note individually, the array allows it only be written once, by simply calling it with the index number set at 0.
+imperial_notes = [:g4,:g4,:g4,:e4,:Bb4,:g4,:e4,:Bb4,:g4,:d5,:d5,:d5,:Eb5,:Bb4,:Gb4,:e4,:Bb4,:Gs4]
+#Using this array,I was able to list out all eighteen sleep notes, in order for the notes to play for the correct length. The array allows it only be written once, by simply calling it with the index number set at 0.
+imperial_sleeps = [1,1,1,0.5,0.5,1,0.5,0.5,2,1,1,1,0.5,0.5,1,0.5,0.5,2]
+
+use_bpm b
+live_loop :imperial_treble do
+  use_synth a
+  #the index is set to 0, because that is the first note that will play, which is c2. 
+  index=0
+  #The index will start at 0 playing the first note, when called in the array.
+  18.times do
+  #In line 10, the array will begin playing all the notes in order as it was listed.
+    play imperial_notes[index]
+   #In line 11, the array will begin playing all the sleep notes in the order as it was listed.
+    sleep imperial_sleeps[index]
+    index = index+c
+    #this will make "index" one count higher
+  end
+   #Once the loop has gone through all eight numbers, it will return to the number 0 and start the loop all over again.
+end
+
+#This Melody will play at the same time as the first live_loop.
+live_loop :imperial_bass do
+  use_synth a
+  play :G3
+  play :B3
+  sleep c
+  play :G3
+  play :B3
+  sleep c
+  play :G3
+  play :B3
+  sleep c
+  play :Eb3
+  play :Gb3
+  sleep c
+  
+  play :G3
+  play :B3
+  sleep c
+  play :Eb3
+  play :Gb3
+  sleep c
+  play :G3
+  play :B3
+  sleep c
+  play :G3
+  play :B3
+  sleep c
+  
+  play :G3
+  play :B3
+  sleep c
+  play :G3
+  play :B3
+  sleep c
+  play :G3
+  play :B3
+  sleep c
+  play :Eb3
+  play :Gb3
+  sleep c
+  
+  play :Eb3
+  play :Gb3
+  sleep c
+  play :E3
+  play :Gb3
+  sleep c
+  play :G3
+  play :B3
+  sleep c
+  play :G3
+  play :B3
+  sleep c
+end
+#Lines 89-92, will begin playing the build up for 9 times, once it plays 9 times it will stop.
+9.times do
+#Lines 91, we are calling the sample that was defined in lines 7 called Father. That will begin playing the sample that I took from a scene in Star Wars. 
+  sample father , amp:12
+  sleep 21
+end
+#Lines 87-95, will begin playing the build up for 9 times, once it plays 9 times it will stop.
+9.times do
+#For line 90, instead of making the amp x (x representing zero) I made the amp choose a random integer between 3 or 9, so when the code runs it will choose between those two numbers. 
+  sample :drum_cymbal_pedal, amp: rrand_i(3,9)
+  sleep 1
+  sample :drum_heavy_kick, amp: x
+  sleep 1
+  sample :elec_filt_snare, amp: x
+  sleep 1
+  x = x + 1
+  #This equation will make all the variables under x, be added by once increasing the note and making it louder. 
+end
