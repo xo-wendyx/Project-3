@@ -1,0 +1,110 @@
+#Duel of the Fates
+#Sheet Music: https://www.musicnotes.com/sheetmusic/mtd.asp?ppn=MN0113654&intcmp=Recommended
+#https://songbpm.com/john-williams-duel-of-the-fates
+d= 12
+e= 7
+x= 0
+c= 1
+fates= '/Users/wendyrodriguez/Desktop/LockScreen'
+fates_sleep=[1,1,0.5,0.5,1]
+fates_notes=[:g4,:a4,:g4,:f4,:e4]
+index=0
+1. times do
+  sample fates, amp: d
+  sleep 15
+end
+live_loop :fates_treble do
+  use_bpm 115
+  use_synth :dpulse
+  play :g4, amp: d
+  play :b4, amp: d
+  sleep c
+  play :g4, release: e, amp: d
+  play :b4, release: e, amp: d
+  sleep e
+  
+  play :a4, amp: d
+  play :b4, amp: d
+  sleep c
+  play :f4, amp: d, release: e
+  play :b4, amp: d, release: e
+  sleep e
+  
+  play :g4, amp: d
+  play :e5, amp: d
+  sleep c
+  play :g4, amp: d, release: e
+  play :e5, amp: d, release: e
+  sleep e
+  
+  play :fs5, amp: d
+  sleep c
+  play :ds5, amp: d
+  sleep c
+  play :g5, amp: d, release: 6
+  play :d5, amp: d, release: 6
+  sleep 6
+  8.times do
+    5.times do
+      play fates_notes [index], amp: d
+      sleep fates_sleep [index]
+      index=index + 1
+    end
+    index=0
+  end
+end
+
+live_loop :fates_bass do
+  play :e3, amp: d
+  play :b3, amp: d
+  sleep c
+  play :e3, amp: d, release: e
+  play :b3, amp: d, release: e
+  sleep e
+  
+  play :fs3, amp: d
+  play :e3, amp: d
+  sleep c
+  play :fs3, amp: d, release: e
+  play :e3, amp: d, release: e
+  sleep e
+  
+  play :b3, amp: d
+  sleep c
+  play :b3, amp: d, release: e
+  sleep e
+  
+  play :a5, amp: d
+  sleep c
+  play :C, amp: d
+  sleep c
+  play :C, amp: d, release: 6
+  sleep 6
+  
+  play :c4, amp: d, release: 8
+  sleep 8
+  
+  sleep 4
+  
+  sleep 4
+  
+  play :d, amp: d
+  sleep c
+  play :f2, amp: d
+  sleep c
+  play :e2, amp: d
+  sleep c
+  play :g2, amp: d
+  sleep c
+end
+12.times do
+  #For line 90, instead of making the amp x (x representing zero) I made the amp choose a random integer between 3 or 9, so when the code runs it will choose between those two numbers.
+  sample :drum_cymbal_pedal, amp: rrand_i(11,12)
+  sleep c
+  sample :drum_heavy_kick, amp: d
+  sleep c
+  sample :elec_filt_snare, amp: d
+  sleep c
+  x = x + 5
+  #This equation will make all the variables under x, be added by once increasing the note and making it louder.
+end
