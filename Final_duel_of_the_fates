@@ -124,13 +124,13 @@ define :drums do |a,b,c|
     sleep 1
   end
 end
-play drums :drums_cymbal_pedal, :drum_heavy_kick, :elec_filt_snare
+play drums :drum_cymbal_pedal, :drum_heavy_kick, :elec_filt_snare
 sleep 1
 
 9.times do
   #For line 118, instead of making the amp x (x representing zero) I made the amp choose a random integer between 0 or 12, so when the code runs it will choose between those two numbers.
-  sample :drums_cymbal_pedal, :drum_heavy_kick, :elec_filt_snare, amp: rrand_i(x,d)
+  sample :drum_cymbal_pedal, :drum_heavy_kick, :elec_filt_snare, amp: rrand_i(x,d)
   sleep c
   x = x + 5
-  #This equation will make all the variables under x, be added by once increasing the note and making it louder.
+  #This equation will make all the variables under x, be added by five increasing the note and making it louder.
 end
