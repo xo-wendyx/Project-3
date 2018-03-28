@@ -12,15 +12,15 @@ c=1
 imperial_notes = [:g4,:g4,:g4,:e4,:Bb4,:g4,:e4,:Bb4,:g4,:d5,:d5,:d5,:Eb5,:Bb4,:Gb4,:e4,:Bb4,:Gs4]
 #Using this array,I was able to list out all eighteen sleep notes, in order for the notes to play for the correct length. The array allows it only be written once, by simply calling it with the index number set at 0.
 imperial_sleeps = [1,1,1,0.5,0.5,1,0.5,0.5,2,1,1,1,0.5,0.5,1,0.5,0.5,2]
-#Lines 89-92, will begin playing the build up for 9 times, once it plays 9 times it will stop.
-
 
 1.times do
-  #Lines 91, we are calling the sample that was defined in lines 7 called Father. That will begin playing the sample that I took from a scene in Star Wars.
+  #Lines 16, we are calling the sample that was defined in lines 7 called Father. That will begin playing the sample that I took from a scene in Star Wars.
   sample father , amp:12
   sleep 4.5
 end
+
 use_bpm b
+#This a live_loop that will play continously throughout my song, it will go on forever until I stop it.
 live_loop :imperial_treble do
   use_synth a
   #the index is set to 0, because that is the first note that will play, which is c2.
