@@ -104,12 +104,12 @@ define :drums do |a,b,c|
     sleep 1
   end
 end
-play drums :drums_cymbal_pedal, :drum_heavy_kick, :elec_filt_snare
+play drums :drum_cymbal_pedal, :drum_heavy_kick, :elec_filt_snare
 sleep 1
 #Lines 87-95, will begin playing the build up for 12 times, once it plays 12 times it will stop.
 12. times do
   #For line 90, instead of making the amp x (x representing zero) I made the amp choose a random integer between 0 or 11, so when the code runs it will choose between those two numbers.
-  sample :drums_cymbal_pedal, :drum_heavy_kick, :elec_filt_snare, amp: rrand_i(x,11)
+  sample :drum_cymbal_pedal, :drum_heavy_kick, :elec_filt_snare, amp: rrand_i(x,11)
   sleep c
   x = x + c
   #This equation will make all the variables under x, be added by once increasing the note and making it louder.
