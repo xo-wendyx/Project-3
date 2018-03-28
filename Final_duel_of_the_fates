@@ -1,42 +1,50 @@
 #Duel of the Fates
 #Sheet Music: https://www.musicnotes.com/sheetmusic/mtd.asp?ppn=MN0113654&intcmp=Recommended
 #https://songbpm.com/john-williams-duel-of-the-fates
-d= 12
-e= 7
+
+#These variables are put in place (Lines 6-15), so that it would make it easier for anyone to change the numbers and names listed throughout the code. Instead of having to change each line one by one, now you change one variable and all of them change.
+d= 12 #This variable represents the amps, that I am using throughout. They will all play the volume of that section at 12, or unless I change it to another number.
+e= 7 
 x= 0
 c= 1
+a= :dpulse 
+#Lines 11, is where I upload my own custom sample to use on Sonic Pi. I downloaded an external file to use and created a variable for it, for when I decide to call it. 
 fates= '/Users/wendyrodriguez/Desktop/LockScreen'
+#Using this array in lines 13,I was able to list out all five sleep notes, in order for the notes to play for the correct length. The array allows it only be written once, by simply calling it with the index number set at 0.
 fates_sleep=[1,1,0.5,0.5,1]
+#Using an array in lines 15,I was able to list out all five notes in order for the melody to correctly play. Instead of writing each note individually, the array allows it only be written once, by simply calling it with the index number set at 0.
 fates_notes=[:g4,:a4,:g4,:f4,:e4]
 index=0
+#Lines 18, will play my custom sample 1 time throughout my entire song, it will have an amp of 12 and will stop playing at 15 seconds/ 
 1. times do
   sample fates, amp: d
   sleep 15
 end
+#This a live_loop that will play continously throughout my song, it will go on forever until I stop it.
 live_loop :fates_treble do
   use_bpm 115
-  use_synth :dpulse
+  use_synth a
   play :g4, amp: d
   play :b4, amp: d
   sleep c
   play :g4, release: e, amp: d
   play :b4, release: e, amp: d
   sleep e
-  
+#The variable e represents the number 7 that I am using throughout my song for either the sleeps or the releases.
   play :a4, amp: d
   play :b4, amp: d
   sleep c
   play :f4, amp: d, release: e
   play :b4, amp: d, release: e
   sleep e
-  
+#The Variable c represents the number 1 that I am using throughout my song for mostly sleep 
   play :g4, amp: d
   play :e5, amp: d
   sleep c
   play :g4, amp: d, release: e
   play :e5, amp: d, release: e
   sleep e
-  
+
   play :fs5, amp: d
   sleep c
   play :ds5, amp: d
@@ -45,15 +53,22 @@ live_loop :fates_treble do
   play :d5, amp: d, release: 6
   sleep 6
   8.times do
+  #The array will only play for eight times, once it plays eight times it will stop 
     5.times do
+    #The array only has five notes and sleeps and will only play those values listed. 
+     #In line 16, the array will begin playing all the notes in order as it was listed.
       play fates_notes [index], amp: d
+      #In line 14, the array will begin playing all the sleep in order as it was listed.
       sleep fates_sleep [index]
-      index=index + 1
+       #this will make "index" one count higher
+      index=index + c
     end
+      #The index will start at 0 playing the first note, when called in the array.
     index=0
+     #the index is set to 0, because that is the first note that will play on the list for both sleeps and notes.
   end
 end
-
+#This is a live_loop that will play continuously throughout my song and will play insync with the first live loop listed at the top. 
 live_loop :fates_bass do
   play :e3, amp: d
   play :b3, amp: d
@@ -61,33 +76,33 @@ live_loop :fates_bass do
   play :e3, amp: d, release: e
   play :b3, amp: d, release: e
   sleep e
-  
+
   play :fs3, amp: d
   play :e3, amp: d
   sleep c
   play :fs3, amp: d, release: e
   play :e3, amp: d, release: e
   sleep e
-  
+
   play :b3, amp: d
   sleep c
   play :b3, amp: d, release: e
   sleep e
-  
+
   play :a5, amp: d
   sleep c
   play :C, amp: d
   sleep c
   play :C, amp: d, release: 6
   sleep 6
-  
+
   play :c4, amp: d, release: 8
   sleep 8
-  
+
   sleep 4
-  
+
   sleep 4
-  
+
   play :d, amp: d
   sleep c
   play :f2, amp: d
@@ -97,13 +112,24 @@ live_loop :fates_bass do
   play :g2, amp: d
   sleep c
 end
-12.times do
-  #For line 90, instead of making the amp x (x representing zero) I made the amp choose a random integer between 3 or 9, so when the code runs it will choose between those two numbers.
-  sample :drum_cymbal_pedal, amp: rrand_i(11,12)
-  sleep c
-  sample :drum_heavy_kick, amp: d
-  sleep c
-  sample :elec_filt_snare, amp: d
+
+#this is a function, instead of writing out the code multiple times, you can asign the code a name (beginning) & call it whenever you need to
+define :drums do |a,b,c|
+  9. times do
+    sample a
+    sleep 1
+    sample b
+    sleep 1
+    sample c
+    sleep 1
+  end
+end
+play drums :drums_cymbal_pedal, :drum_heavy_kick, :elec_filt_snare
+sleep 1
+
+9.times do
+  #For line 118, instead of making the amp x (x representing zero) I made the amp choose a random integer between 0 or 12, so when the code runs it will choose between those two numbers.
+  sample :drums_cymbal_pedal, :drum_heavy_kick, :elec_filt_snare, amp: rrand_i(x,d)
   sleep c
   x = x + 5
   #This equation will make all the variables under x, be added by once increasing the note and making it louder.
